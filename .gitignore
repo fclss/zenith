@@ -1,0 +1,22 @@
+# Build
+/target
+**/*.rs.bk
+
+# Local runtime artifacts
+*.err
+generated.json
+
+# Editors / OS
+.idea/
+.vscode/
+*.swp
+*~
+.DS_Store
+
+# AI / internal working notes (not part of the published repo)
+.agents/
+.scratch/
+AGENTS.md
+docs/agents/
+skills-lock.json
+.opencode

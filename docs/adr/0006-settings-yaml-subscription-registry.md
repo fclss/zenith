@@ -1,0 +1,7 @@
+# Settings live in one user-edited YAML; state stays separate
+
+All of Zenith's configuration lives in a single user-edited YAML settings file, which also carries the subscription registry — named subscriptions, each with an optional update URL (absent for purely local subscriptions), the path to its subscription file, an auto-update flag, and an optional default node. Global settings (default subscription, default mode, system-proxy toggle, theme, delay-refresh interval) live alongside. Runtime state — the re-attach pointer and the last-active node per subscription — lives in a separate state file, because the client writes it constantly and must never fight the user's editor over the settings file. Adding or removing a subscription is done by editing the settings file, not in the app: the file is the interface, consistent with how we treat the subscription file itself.
+
+Considered: TOML (rejected — the user wants YAML, and YAML reads better for hand-edited nested config), and a single file holding settings plus state (rejected — the app's writes would race the user's editor). This reverses the earlier "one subscription at a time" scoping: multi-subscription is now in scope, and auto-update is a per-subscription behaviour.
+
+Superseded in part by ADR-0007: subscription registry entries are now also editable in-app; the settings file remains the single source on disk and is written only for those mutations.

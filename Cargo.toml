@@ -1,0 +1,30 @@
+[package]
+name = "zenith"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.75"
+description = "A terminal UI that routes this machine's traffic through a remote proxy server via sing-box"
+license = "MIT"
+repository = "https://github.com/fclss/zenith"
+homepage = "https://github.com/fclss/zenith"
+documentation = "https://github.com/fclss/zenith#readme"
+readme = "README.md"
+keywords = ["tui", "proxy", "sing-box", "vpn", "clash"]
+categories = ["command-line-utilities", "network-programming"]
+
+[[bin]]
+name = "zenith"
+path = "src/main.rs"
+
+[dependencies]
+ratatui = "0.29"
+crossterm = "0.28"
+serde = { version = "1", features = ["derive"] }
+serde_yaml = "0.9"
+serde_json = "1"
+ureq = { version = "2", features = ["json"] }
+dirs = "6"
+libc = "0.2"
+
+[profile.release]
+lto = true

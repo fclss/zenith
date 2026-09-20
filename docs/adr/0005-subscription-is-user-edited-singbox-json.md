@@ -1,0 +1,5 @@
+# The subscription is a user-edited sing-box JSON config
+
+The subscription is a sing-box JSON config fetched from a URL and stored locally. It carries the node outbounds, routing rules, rule-sets, and DNS. The client's only operations are update (re-fetch the URL, replace the file) and run; it never edits the subscription. Rule changes are made by the user in their own editor (`$EDITOR`), then applied via the live config reload — the TUI shows rules read-only. This is the "no subscription editing interface" stance: the interface is deliberately nothing, the file is the interface.
+
+Considered: Clash YAML subscriptions (the web standard, but sing-box doesn't run YAML natively — would need a converter we don't want to own) and client-owned rules with a toggle UI (rejected: a TUI-owned second source of truth on top of a file the user also edits). Consequence: choosing a subscription URL is choosing a sing-box-compatible source — providers that only emit Clash YAML need a conversion step at the URL before Zenith sees them.
