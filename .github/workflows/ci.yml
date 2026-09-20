@@ -104,7 +104,7 @@ jobs:
         run: ./target/release/zenith --proxy-env
 
       - name: Upload binary
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: zenith-linux-amd64
           path: target/release/zenith
